@@ -8,7 +8,7 @@ function add(num1, num2){
 currentResults = add(1,2);
 
 
-let calculationDescription = '(' + defaultResult + '+ 10)'; 
+let calculationDescription ='( '+ defaultResult +' + 10) * 3 / 2 - 1' ; 
 
 outputResult(currentResults,calculationDescription);
 
