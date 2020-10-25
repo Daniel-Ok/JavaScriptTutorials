@@ -23,7 +23,7 @@ function add(){
         result: currentResults
     };//object created
     logEntries.push(LogEntry);
-    console.log();
+    console.log(logEntry.operation);
 }
 
 
