@@ -1,0 +1,1 @@
+const itemName = document.querySelector('.task-1')
