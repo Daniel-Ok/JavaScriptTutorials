@@ -13,36 +13,55 @@ class Product {
     }
 }
 
-const productList = {
-     products: [
-       new Product('A Pillow', 'assets/images/capture.PNG', 39.9, 'A very nice carpet' ),
-       new Product('A man','assets/images/professional photo copy.png', 100.00, 'A very strong man')
-    ],
+class ProductItem {
+
+    constructor(product) {
+        this.product = product;
+    };
+
     render() {
+        const prodEl = document.createElement('li');
+        prodEl.className = 'product-item';
+        prodEl.innerHTML = `
+        <div>
+        <img src="${this.product.imageUrl}" alt="${this.product.title}">
+        <div class="product-item__content">
+        <h2>${this.product.title}</h2>
+        <h3>${this.product.price}</h3>
+        <p>${this.product.description}</p>
+        <button>Add to cart</button>
+        </div>
+        </div>
+        `;
+        return prodEl;
+       
+    };
+
+}
+class ProductList {
+    products =[
+        new Product('A Pillow', 'assets/images/capture.PNG', 39.9, 'A very nice carpet' ),
+        new Product('A man','assets/images/professional photo copy.png', 100.00, 'A very strong man')
+    ];
+  
+
+    render(){
         const renderElement = document.getElementById('app');
         const prodlist = document.createElement('ul');
         prodlist.className = 'product-list';
        
         for (const prod of this.products) {
-            const prodEl = document.createElement('li');
-            prodEl.className = 'product-item';
-            prodEl.innerHTML = `
-            <div>
-            <img src="${prod.imageUrl}" alt="${prod.title}">
-            <div class="product-item__content">
-            <h2>${prod.title}</h2>
-            <h3>${prod.price}</h3>
-            <p>${prod.description}</p>
-            <button>Add to cart</button>
-            </div>
-            </div>
-            `;
+            const productItem = new ProductItem(prod);
+            const prodEl = productItem.render();
             prodlist.append(prodEl);
            
         };
         renderElement.append(prodlist);
        
     }
-};
+    constructor () {}
+}
+
+const productList = new ProductList();
 
 productList.render();
