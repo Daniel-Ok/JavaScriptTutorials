@@ -1,28 +1,30 @@
 
+class Product {
+    title = 'DEFAULT';
+    imageUrl;
+    description;
+    price;
+
+    constructor(title, imageUrl, description, price) {
+        this.title = title;
+        this.imageUrl = imageUrl;
+        this.description = description;
+        this.price = price;
+    }
+}
 
 const productList = {
      products: [
-       
-        {
-            title: 'A Carpet',
-            imageUrl:'assets/images/capture.PNG',
-            price: 39.9,
-            description: 'A very nice carpet'   
-        },
-        {
-            title: 'A Pillow',
-            imageUrl: '',
-            price: 19.9,
-            description: 'A soft pillow'
-        },
-
+       new Product('A Pillow', 'assets/images/capture.PNG', 39.9, 'A very nice carpet' ),
+       new Product('A man','assets/images/professional photo copy.png', 100.00, 'A very strong man')
     ],
     render() {
         const renderElement = document.getElementById('app');
         const prodlist = document.createElement('ul');
         prodlist.className = 'product-list';
-        var prodEl = document.createElement('li');
-        for (const prod of this.products){
+       
+        for (const prod of this.products) {
+            const prodEl = document.createElement('li');
             prodEl.className = 'product-item';
             prodEl.innerHTML = `
             <div>
