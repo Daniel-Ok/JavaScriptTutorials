@@ -13,8 +13,24 @@ class Product {
     }
 }
 
-class ProductItem {
+class ShoppingCart{
+    items = [];
 
+    render(){
+        const cartEl = document.createElement('section');
+        cartEl.innerHTML = `
+            <h2> Total: \$ ${0}</h2>
+            <button> Order Now ! </button>
+        `;
+        cartEl.className = 'cart';
+        return cartEl;
+    }
+}
+
+
+
+class ProductItem {
+    
     constructor(product) {
         this.product = product;
     };
@@ -43,32 +59,46 @@ class ProductItem {
         return prodEl;
        
     };
-
+    
 }
 class ProductList {
     products =[
         new Product('A Pillow', 'assets/images/capture.PNG', 39.9, 'A very nice carpet' ),
         new Product('A man','assets/images/professional photo copy.png', 100.00, 'A very strong man')
     ];
-  
+    
 
     render(){
         const renderElement = document.getElementById('app');
         const prodlist = document.createElement('ul');
         prodlist.className = 'product-list';
-       
+        
         for (const prod of this.products) {
             const productItem = new ProductItem(prod);
             const prodEl = productItem.render();
             prodlist.append(prodEl);
-           
+            
         };
         renderElement.append(prodlist);
-       
+        
     }
     constructor () {}
 }
 
-const productList = new ProductList();
 
-productList.render();
+class Shop {
+
+    render () {
+        const renderElement = document.getElementById('app');
+        const cart = new ShoppingCart();
+        const cartEl = cart.render();
+        const productList = new ProductList();
+        productList.render();
+
+        renderElement.append(cartEl);
+        renderElement.append(prodListEl);
+    }
+}
+
+const shop = new Shop();
+shop.render();
