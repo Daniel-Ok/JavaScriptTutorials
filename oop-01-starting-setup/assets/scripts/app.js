@@ -93,10 +93,10 @@ class Shop {
         const cart = new ShoppingCart();
         const cartEl = cart.render();
         const productList = new ProductList();
-        productList.render();
+        const prodlistEl = productList.render();
 
         renderElement.append(cartEl);
-        renderElement.append(prodListEl);
+        renderElement.append(prodlistEl);
     }
 }
 
